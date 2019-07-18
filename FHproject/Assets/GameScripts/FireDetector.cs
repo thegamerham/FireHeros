@@ -19,7 +19,14 @@ public class FireDetector : MonoBehaviour
     {
         isHit = false;       
     }
-    
+
+    private void Update()
+    {
+        if (fr == null)
+        {
+            isHit = false;
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {

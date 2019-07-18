@@ -11,7 +11,10 @@ public class Player3Controller : MonoBehaviour
 
     GameObject player; //player 오브젝트
     GameObject touchFire;
+    GameObject coll;
     GameManager GM;
+
+    Touch t;
 
     Vector3 moving = new Vector3(0, 0, 0);
 
@@ -26,13 +29,17 @@ public class Player3Controller : MonoBehaviour
     //AP회복, 타이머
     void Update()
     {
-
         timer -= Time.deltaTime;
         if (timer < 0.0f)
         {
             timer = 15.0f;
         }
 
+        touchRay();
+        if (coll == touchFire)
+        {
+            Destroy(coll.gameObject);
+        }
     }
 
 
@@ -41,29 +48,18 @@ public class Player3Controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "fire")
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-            touchFire = hit.transform.gameObject;
-
-
-
-            if (collision.gameObject.transform.position == touchFire.gameObject.transform.position && GM.playAP > 4)
-            {
-                Destroy(collision.gameObject);
-                GM.playAP = GM.playAP - 3;
-                gameObject.transform.position = new Vector3(0, -2.2f, 0);
-            }
+            coll = collision.gameObject;
         }
     }
 
-    //public GameObject desTouch()
-    //{
-    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //    RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-    //    touchFire = hit.transform.gameObject;
-    //
-    //    return touchFire;
-    //}
+    public GameObject touchRay()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+        touchFire = hit.transform.gameObject;
+
+        return touchFire;
+    }
 
     // +Y 이동
     public void moveUp()

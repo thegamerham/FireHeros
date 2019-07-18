@@ -68,9 +68,7 @@ public class Player1Controller : MonoBehaviour
         //불에 닿으면 HP - 1 and 캐릭터와 겹쳐진 불은 삭제
         if (collision.gameObject.tag == "fire")
         {
-            
-            playerHP--;
-            player.transform.position = collision.transform.position;
+            playerHP = playerHP -1;
 
             Destroy(collision.gameObject);
             if(rescueMax == 0)
@@ -81,6 +79,7 @@ public class Player1Controller : MonoBehaviour
             
         }
     }
+
 
     // +Y 이동
     public void moveUp()

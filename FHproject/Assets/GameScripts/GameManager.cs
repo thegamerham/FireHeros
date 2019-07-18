@@ -37,10 +37,10 @@ public class GameManager : MonoBehaviour
         if(FG.fires.Length == 0)
         {
             SceneManager.LoadScene("StageClear");
-        }
+        }/*
         else if(FG.fires.Length >= 60)
         {
             SceneManager.LoadScene("GameOver");
-        }
+        }*/
     }
 }

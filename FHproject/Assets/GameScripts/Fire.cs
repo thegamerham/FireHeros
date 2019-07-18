@@ -48,7 +48,7 @@ public class Fire : MonoBehaviour
 
         Vector3 nlocation;
 
-        switch(windDir)
+        switch (windDir)
         {
             case 0://왼쪽 불 번짐
                 fd = LeftCollis.GetComponent<FireDetector>();

@@ -63,11 +63,10 @@ public class Player2Controller : MonoBehaviour
     //불에 닿으면 HP - 1 and 캐릭터와 겹쳐진 불은 삭제
     public void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(gameObject.tag);
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "fire")
         {
-            player2HP--;
-            player2.transform.position = collision.transform.position;
+            player2HP = player2HP - 1;
 
             Destroy(collision.gameObject);
             if (rescueMax == 0 || rescueMax == 1)

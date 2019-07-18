@@ -79,6 +79,7 @@
     <Compile Include="Assets\GameScripts\SelectCharacter.cs" />
     <Compile Include="Assets\GameScripts\Timer.cs" />
     <Compile Include="Assets\GameScripts\UIManager.cs" />
+    <Compile Include="Assets\GameScripts\WindDir.cs" />
     <Compile Include="Assets\MainScripts\character.cs" />
     <Compile Include="Assets\MainScripts\empower.cs" />
     <Compile Include="Assets\MainScripts\hpUp.cs" />

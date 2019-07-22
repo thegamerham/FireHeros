@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7649623516336657017}
   - component: {fileID: 7649623516336657014}
   - component: {fileID: 3053384468107305637}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 7649623518150685949}
   - component: {fileID: 7649623518150685946}
   - component: {fileID: 7649623518150685950}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Inflame
   m_TagString: inflame
   m_Icon: {fileID: 0}

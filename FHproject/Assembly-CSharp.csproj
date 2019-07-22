@@ -68,16 +68,18 @@
     <Compile Include="Assets\GameScripts\FireDestroyer.cs" />
     <Compile Include="Assets\GameScripts\FireDetector.cs" />
     <Compile Include="Assets\GameScripts\FireGenerator.cs" />
-    <Compile Include="Assets\GameScripts\GameController.cs" />
     <Compile Include="Assets\GameScripts\GameManager.cs" />
     <Compile Include="Assets\GameScripts\Inflame.cs" />
+    <Compile Include="Assets\GameScripts\LobyManager.cs" />
     <Compile Include="Assets\GameScripts\MapManager.cs" />
     <Compile Include="Assets\GameScripts\Player1Controller.cs" />
     <Compile Include="Assets\GameScripts\Player2Controller.cs" />
     <Compile Include="Assets\GameScripts\Player3Controller.cs" />
     <Compile Include="Assets\GameScripts\Rescue.cs" />
+    <Compile Include="Assets\GameScripts\SaveUserInfo.cs" />
     <Compile Include="Assets\GameScripts\SceneLoad.cs" />
     <Compile Include="Assets\GameScripts\SelectCharacter.cs" />
+    <Compile Include="Assets\GameScripts\StatusBuilUp.cs" />
     <Compile Include="Assets\GameScripts\Timer.cs" />
     <Compile Include="Assets\GameScripts\UIManager.cs" />
     <Compile Include="Assets\GameScripts\WindDir.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Assets\MainScripts\skill6.cs" />
     <Compile Include="Assets\MainScripts\skill7.cs" />
     <Compile Include="Assets\MainScripts\stagePOPUP.cs" />
+    <Compile Include="Assets\MainScripts\StatusBuildUp.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

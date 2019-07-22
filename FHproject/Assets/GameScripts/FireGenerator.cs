@@ -24,12 +24,10 @@ public class FireGenerator : MonoBehaviour
     {
         span -= Time.deltaTime;
         ranTime -= Time.deltaTime;
-
+        this.fires = GameObject.FindGameObjectsWithTag("fire");
         if (span <= 0.0f)
         {
             //생성된 불 검색
-            this.fires = GameObject.FindGameObjectsWithTag("fire");
-
             this.span = 10.0f;
 
             //WindDir에 저장된 배열에서 바람의 방향을 참조

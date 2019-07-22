@@ -46,8 +46,6 @@ public class empower : MonoBehaviour
     {
         if (activeEmpower == true) // openEmpower 안박아서 일단 false라 실행안됨 수정해야함.
         {
-
-            Debug.Log(PlayerPrefs.GetInt("currentSp"));
             needSp3.GetComponent<Text>().text = gameManager.GetComponent<skill7>().needSp.ToString(); // [공용] 공용스킬인 7번스킬 요구 sp출력
             skillName3.GetComponent<Text>().text = gameManager.GetComponent<skill7>().skillName.ToString(); // [공용] 공용스킬인 7번스킬 요구 sp출력
             currentSp.GetComponent<Text>().text = gameManager.GetComponent<character>().currentSp.ToString();// [공용]남은 sp 출력
@@ -148,10 +146,7 @@ public class empower : MonoBehaviour
 
 
 
-    public void openPanel1()
-    {
-        Panel1.SetActive(true);
-    }
+
     public void openPanel2()
     {
         Panel2.SetActive(true);
@@ -225,12 +220,6 @@ public class empower : MonoBehaviour
 
     public void Cancel() // 스탯저장취소
     {
-        Debug.Log(getCurrentSp);
-        PlayerPrefs.SetInt("currentSp", getCurrentSp);
-        
-        Debug.Log(PlayerPrefs.GetInt("currentSp"));// 팝업을 열때 취소하려고 저장했던 값인 getCurrentSp를 불러와서 저장데이터에 직접 연관주는 SetInt에 값을 저장.
-        gameManager.GetComponent<character>().currentSp = getCurrentSp; // 취소된 값을 캐릭터 클래스의 남은sp에 전달한다.
-        
 
         empowerPopup.SetActive(false); // 단순 팝업만닫기
 

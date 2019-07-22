@@ -19,18 +19,21 @@ public class Player2Controller : MonoBehaviour
     public Text res;
 
     GameManager GM;
+    SaveUserInfo SUI;
 
     GameObject player2; //player 오브젝트
 
     Vector3 moving = new Vector3(0, 0, 0);
 
-    int player2HP = 3;
+    int player2HP;
     int rescueMax = 2;
 
     void Start()
     {
         player2 = this.gameObject;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
+        player2HP = SUI.player2_HP;
     }
 
     float P2_timer = 7.5f;
@@ -63,7 +66,6 @@ public class Player2Controller : MonoBehaviour
     //불에 닿으면 HP - 1 and 캐릭터와 겹쳐진 불은 삭제
     public void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "fire")
         {
             player2HP = player2HP - 1;
@@ -97,7 +99,7 @@ public class Player2Controller : MonoBehaviour
         {
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
-            if (CD.hitFire == true)
+            if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player2.transform.position = moving; //이동하지 않음
                 Destroy(CD.cdr.gameObject); // 닿아 있는 불 제거
@@ -132,7 +134,7 @@ public class Player2Controller : MonoBehaviour
         {
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
-            if (CD.hitFire == true)
+            if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player2.transform.position = moving;
                 Destroy(CD.cdr.gameObject);

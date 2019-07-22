@@ -17,17 +17,24 @@ public class Inflame : MonoBehaviour
     {
         if(collision.gameObject.tag == "fire")
         {
-            for(int i = 0; i<4; i++)
+            StartCoroutine(delay());
+            for (int i = 0; i<4; i++)
             {
                 boomFire(i);
             }
             Destroy(gameObject);
         }
     }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }
     
     public void boomFire(int windDir)
     {
         Vector3 nlocation;
+        
 
         switch (windDir)
         {
@@ -77,15 +84,15 @@ public class Inflame : MonoBehaviour
                     Instantiate(fr, nlocation, transform.rotation);
                 }
                 break;
-            case 4://중앙
-
-                fd = DownCollis.GetComponent<FireDetector>();
-
-                nlocation = transform.position;
-
-                Instantiate(fr, nlocation, transform.rotation);
-
-                break;
+            //case 4://중앙
+            //
+            //    fd = DownCollis.GetComponent<FireDetector>();
+            //
+            //    nlocation = transform.position;
+            //
+            //    Instantiate(fr, nlocation, transform.rotation);
+            //
+            //    break;
         }
 
     }

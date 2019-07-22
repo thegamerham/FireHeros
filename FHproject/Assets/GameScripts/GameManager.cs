@@ -10,18 +10,20 @@ public class GameManager : MonoBehaviour
     public Text ap;
     public int playAP;
 
-    GameObject canv;
-
     Timer TM;
-
     FireGenerator FG;
+    SaveUserInfo SUI;
 
     private void Awake()
     {
-        playAP = 7;
+        SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
+    }
+
+    private void Start()
+    {
         TM = GameObject.Find("Timer").GetComponent<Timer>();
         FG = GameObject.Find("FireGenerator").GetComponent<FireGenerator>();
-        canv = GameObject.Find("Canvas");
+        playAP = SUI.AP;
     }
 
     private void Update()
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
         //10초 마다 AP 회복
         if((int)TM.timer <= 0)
         {
-            playAP = 7;
+            playAP = SUI.AP;
         }
         //AP 표시
         ap.text = string.Format("{0:f0}", "남은 AP : " + playAP);
@@ -37,10 +39,10 @@ public class GameManager : MonoBehaviour
         if(FG.fires.Length == 0)
         {
             SceneManager.LoadScene("StageClear");
-        }/*
+        }
         else if(FG.fires.Length >= 60)
         {
             SceneManager.LoadScene("GameOver");
-        }*/
+        }
     }
 }

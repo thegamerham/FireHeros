@@ -21,10 +21,11 @@ public class Player1Controller : MonoBehaviour
 
     GameObject player; //player 오브젝트
     GameManager GM;
+    SaveUserInfo SUI;
 
     Vector3 moving = new Vector3(0, 0, 0);
 
-    int playerHP = 3; 
+    int playerHP;
     int rescueMax = 1; //구조 할 수 있는 최대 인원
     //int safeman;
     
@@ -33,6 +34,8 @@ public class Player1Controller : MonoBehaviour
     {
         player = this.gameObject;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
+        playerHP = SUI.player1_HP;
     }
 
     float P1_timer = 7.5f;
@@ -64,7 +67,6 @@ public class Player1Controller : MonoBehaviour
     
     public void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         //불에 닿으면 HP - 1 and 캐릭터와 겹쳐진 불은 삭제
         if (collision.gameObject.tag == "fire")
         {
@@ -101,7 +103,8 @@ public class Player1Controller : MonoBehaviour
         {
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
-            if (CD.hitFire == true)
+            //계단에서만 상-하 불을 끌 수 있다
+            if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player.transform.position = moving; //이동하지 않음
                 Destroy(CD.cdr.gameObject); // 닿아 있는 불 제거
@@ -136,7 +139,7 @@ public class Player1Controller : MonoBehaviour
         {
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
-            if (CD.hitFire == true)
+            if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player.transform.position = moving;
                 Destroy(CD.cdr.gameObject);

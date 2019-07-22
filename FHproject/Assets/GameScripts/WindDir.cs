@@ -52,21 +52,26 @@ public class WindDir : MonoBehaviour
     //풍향계 방향 바꾸기. 다음에 번지는 방향을 알려줌
     public void dir()
     {
+        //왼쪽
         if(futureWind == 0)
         {
-            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, -270);
+            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
+        //오른쪽
         else if (futureWind == 1)
         {
-            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, -90);
+            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 270);
         }
+        //북쪽
         else if (futureWind == 2)
         {
             this.img_dir.transform.rotation = Quaternion.identity;
         }
+
+        //아래
         else if (futureWind == 3)
         {
-            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, -270);
+            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 180);
         }
 
     }

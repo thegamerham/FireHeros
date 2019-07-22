@@ -47,7 +47,6 @@ public class Fire : MonoBehaviour
         // # 같은 위치에 중첩되지 않는다
 
         Vector3 nlocation;
-
         switch (windDir)
         {
             case 0://왼쪽 불 번짐
@@ -81,7 +80,7 @@ public class Fire : MonoBehaviour
                 nlocation.y += 0.7f;
 
                 //불의 윗쪽에 불이 없고 맵을 벗어나지 않았다면 생성
-                if (fd.hit == false && nlocation.y <= 4.2f)
+                if (fd.hit == false && nlocation.y <= 4.8f)
                 {
                     Instantiate(fr, nlocation, transform.rotation);
                 }
@@ -93,7 +92,7 @@ public class Fire : MonoBehaviour
                 nlocation.y -= 0.7f;
 
                 //불의 아랫쪽에 불이 없고 맵을 벗어나지 않았다면 생성
-                if (fd.hit == false && nlocation.y >= -1.7f)
+                if (fd.hit == false && nlocation.y >= -1.4f)
                 {
                     Instantiate(fr, nlocation, transform.rotation);
                 }

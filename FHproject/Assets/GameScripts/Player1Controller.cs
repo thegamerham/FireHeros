@@ -17,7 +17,10 @@ public class Player1Controller : MonoBehaviour
 
     public Text hp;
     public Text res;
-   // public Text safe;
+    // public Text safe;
+
+    private AudioSource theAudio;   // 오디오 소스 가져오기. 이를 통해 재생 가능.
+    [SerializeField] private AudioClip[] clip; // 인스펙터 창에 mp3 넣을 수 있게 만들어 주기, 오디오 클립 만들어 주기. (배열로)
 
     GameObject player; //player 오브젝트
     GameManager GM;
@@ -33,6 +36,8 @@ public class Player1Controller : MonoBehaviour
     {
         player = this.gameObject;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        theAudio = GetComponent<AudioSource>(); // 시작하자마자 오디오 찾기.
     }
 
     float P1_timer = 7.5f;
@@ -69,6 +74,8 @@ public class Player1Controller : MonoBehaviour
         if (collision.gameObject.tag == "fire")
         {
             playerHP = playerHP -1;
+            theAudio.clip = clip[0];        // 해당 배열에 몇 번째 놈 재생 시킬 것인지.
+            theAudio.Play();                // 재생.
 
             Destroy(collision.gameObject);
             if(rescueMax == 0)
@@ -106,7 +113,9 @@ public class Player1Controller : MonoBehaviour
                 player.transform.position = moving; //이동하지 않음
                 Destroy(CD.cdr.gameObject); // 닿아 있는 불 제거
                 GM.playAP--;
-                
+
+                theAudio.clip = clip[1];        // 해당 배열에 몇 번째 놈 재생 시킬 것인지.
+                theAudio.Play();                // 재생.
             }
             //닿아 있지 않다면 이동. AP -1
             else if (moving.y <= 3.4f && (moving.x >= -0.1 && moving.x <= 0.1))
@@ -141,6 +150,9 @@ public class Player1Controller : MonoBehaviour
                 player.transform.position = moving;
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
+
+                theAudio.clip = clip[1];        // 해당 배열에 몇 번째 놈 재생 시킬 것인지.
+                theAudio.Play();                // 재생.
             }
             //최대 움직일 수 있는 범위 설정, x좌표 값 오류로 범위 체크해야 함
             else if ((moving.x >= -0.1 && moving.x <= 0.1) && moving.y > -1.6f)
@@ -192,6 +204,9 @@ public class Player1Controller : MonoBehaviour
                 //캐릭터와 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
+
+                theAudio.clip = clip[1];        // 해당 배열에 몇 번째 놈 재생 시킬 것인지.
+                theAudio.Play();                // 재생.
             }
 
             //구조자를 업는다
@@ -256,6 +271,9 @@ public class Player1Controller : MonoBehaviour
                 // 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
+
+                theAudio.clip = clip[1];        // 해당 배열에 몇 번째 놈 재생 시킬 것인지.
+                theAudio.Play();                // 재생.
             }
 
             //구조자를 업는다

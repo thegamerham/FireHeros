@@ -13,7 +13,7 @@ public class WindDir : MonoBehaviour
     int futureWind;
     int i = 0;
 
-    float time = 10.0f;
+    float time = 8.0f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,7 +37,7 @@ public class WindDir : MonoBehaviour
             wind();
             dir();
             i++;
-            time = 10f;
+            time = 8f;
         }
     }
 

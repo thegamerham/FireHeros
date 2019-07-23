@@ -9,7 +9,7 @@ public class FireGenerator : MonoBehaviour
 
     WindDir WD;
 
-    float span = 7.0f;
+    float span = 8.0f;
 
 
     int windDir;
@@ -27,7 +27,7 @@ public class FireGenerator : MonoBehaviour
         if (span <= 0.0f)
         {
             //생성된 불 검색
-            this.span = 7.0f;
+            this.span = 8.0f;
 
             //WindDir에 저장된 배열에서 바람의 방향을 참조
             windDir = WD.wind();

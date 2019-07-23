@@ -15,6 +15,15 @@ public class Player1Controller : MonoBehaviour
     public GameObject P_UpCollis;
     public GameObject P_DownCollis;
 
+    [SerializeField]
+    Button btn_Up;
+    [SerializeField]
+    Button btn_Down;
+    [SerializeField]
+    Button btn_Left;
+    [SerializeField]
+    Button btn_Right;
+
     public Text hp;
     public Text res;
    // public Text safe;
@@ -51,6 +60,7 @@ public class Player1Controller : MonoBehaviour
             res.text = string.Format("{0:f0}", "      : " + (rescueMax - 1) + "명");
         }
 
+        Invoke("AP_Checker", 1);
 
         if (playerHP == 0)
         {
@@ -77,6 +87,23 @@ public class Player1Controller : MonoBehaviour
         }
     }
 
+    public void AP_Checker()
+    {
+        if(GM.playAP == 0)
+        {
+            btn_Up.GetComponent<Button>().interactable = false;
+            btn_Down.GetComponent<Button>().interactable = false;
+            btn_Left.GetComponent<Button>().interactable = false;
+            btn_Right.GetComponent<Button>().interactable = false;
+        }
+        else if (GM.playAP != 0)
+        {
+            btn_Up.GetComponent<Button>().interactable = true;
+            btn_Down.GetComponent<Button>().interactable = true;
+            btn_Left.GetComponent<Button>().interactable = true;
+            btn_Right.GetComponent<Button>().interactable = true;
+        }
+    }
 
     // +Y 이동
     public void moveUp()
@@ -93,9 +120,11 @@ public class Player1Controller : MonoBehaviour
         if (GM.playAP == 0)
         {
             print("AP없음");
+            
         }
         else
         {
+            
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
             //계단에서만 상-하 불을 끌 수 있다
@@ -234,9 +263,10 @@ public class Player1Controller : MonoBehaviour
         // AP(행동력)이 있을 때만 행동(불끄기, 이동)이 가능함
 
         // AP 체크
-        if (GM.playAP == 0)
+        if (GM.playAP - 1.0f < 0.0f)
         {
             print("AP없음");
+
         }
         else
         {
@@ -257,7 +287,7 @@ public class Player1Controller : MonoBehaviour
 
                 // 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
-                GM.playAP--;
+                GM.playAP -= 1.0f;
             }
 
             //구조자를 업는다
@@ -265,7 +295,7 @@ public class Player1Controller : MonoBehaviour
             {
                 player.transform.position = moving;
                 Destroy(CD.res.gameObject);
-                GM.playAP--;
+                GM.playAP -= 1.0f;
                 rescueMax--;
             }
             //구조할 수 있는 한계치가 있다
@@ -280,7 +310,7 @@ public class Player1Controller : MonoBehaviour
             else if (moving.y > -2.0f && moving.y < 4.8f && moving.x <= 2.1f)
             {
                 player.transform.Translate(0.7f, 0, 0);
-                GM.playAP--;
+                GM.playAP -= 1.0f;
             }
         }
     }

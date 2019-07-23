@@ -79,9 +79,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9396}
     - Class: 114
-      Script: {instanceID: 24772}
+      Script: {instanceID: 16578}
     - Class: 114
-      Script: {instanceID: 24774}
+      Script: {instanceID: 16580}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -335,7 +335,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10260}
     - Class: 114
-      Script: {instanceID: 12380}
+      Script: {instanceID: 30262}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1019,7 +1019,7 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: ba308284cd821cd0197914db1b1a9ff3
+      Hash: 993fdd15a90ea8c00811989f6aee948c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1151,7 +1151,7 @@ ScriptsOnlyBuild:
     className: skill2
   - hash:
       serializedVersion: 2
-      Hash: 407c7299ca3baea6b9eb1d077002c2ff
+      Hash: b8ea1da349696beeb16f60b22d074031
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player1Controller
@@ -1216,4 +1216,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Stage1.unity
   - Assets/Scenes/GameOver.unity
   - Assets/Scenes/StageClear.unity
-  playerPath: C:/Users/samsung/Desktop/FH_Test01_16.apk
+  playerPath: C:/Users/samsung/Desktop/FH_Test01_16_6.apk

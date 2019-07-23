@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     //캐릭터 정보
     public Text ap;
-    public int playAP;
+    public float playAP;
 
     Timer TM;
     FireGenerator FG;

@@ -9,6 +9,8 @@ public class SaveUserInfo : MonoBehaviour
     public int player2_HP = 3;
     public int AP = 7;
     public int SP = 10;
+    public int player1_Range = 1;
+    public int player2_Rescue = 2;
 
     private void Awake()
     {

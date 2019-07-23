@@ -44,11 +44,11 @@ public class Player3Controller : MonoBehaviour
 
 
     //터치 된 불 끄기 : 타겟을 움직인 후 1초 내에 터치해야 꺼짐
-    public void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerEtner2D(Collider2D collision)
     {
-        Debug.Log(coll.transform.position);
         if (collision.gameObject.tag == "fire")
         {
+            Debug.Log("타겟딩 : " + collision.gameObject.transform.position);
             coll = collision.gameObject;
         }
     }
@@ -57,7 +57,7 @@ public class Player3Controller : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-        Debug.Log(hit.transform.position);
+        Debug.Log("ray : " + hit.transform.position);
         touchFire = hit.transform.gameObject;
 
         return touchFire;

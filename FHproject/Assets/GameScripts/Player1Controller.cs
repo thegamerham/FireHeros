@@ -51,16 +51,18 @@ public class Player1Controller : MonoBehaviour
     void Update()
     {
         hp.text = string.Format("{0:f0}", " X " + playerHP);
-        if(rescueMax == 0)
+
+        //구조자 표시
+        if (rescueMax == 0)
         {
-            res.text = string.Format("{0:f0}", "      : " + (rescueMax + 1) + "명");
+            res.text = string.Format("{0:f0}", "      : " + 1 + "명");
         }
-        else if(rescueMax == 1)
+        else if (rescueMax == 1)
         {
-            res.text = string.Format("{0:f0}", "      : " + (rescueMax - 1) + "명");
+            res.text = string.Format("{0:f0}", "      : " + 0 + "명");
         }
 
-        Invoke("AP_Checker", 1);
+        AP_Checker();
 
         if (playerHP == 0)
         {
@@ -131,6 +133,17 @@ public class Player1Controller : MonoBehaviour
             if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player.transform.position = moving; //이동하지 않음
+                if (SUI.player1_Range == 2)
+                {
+                    //캐릭터와 부딪힌 불 왼쪽에 불이 있는지 FireDetecter에서 참조한다
+                    if (CD.cdr.UpCollis.GetComponent<FireDetector>().fr != null)
+                    {
+                        //불 왼쪽에 불이 닿아 있다면 삭제
+                        // X축은 2칸 씩 불을 끌 수 있다
+                        Destroy(CD.cdr.UpCollis.GetComponent<FireDetector>().fr.gameObject);
+                    }
+                    
+                }
                 Destroy(CD.cdr.gameObject); // 닿아 있는 불 제거
                 GM.playAP--;
                 
@@ -166,6 +179,16 @@ public class Player1Controller : MonoBehaviour
             if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player.transform.position = moving;
+                if (SUI.player1_Range == 2)
+                {
+                    //캐릭터와 부딪힌 불 왼쪽에 불이 있는지 FireDetecter에서 참조한다
+                    if (CD.cdr.DownCollis.GetComponent<FireDetector>().fr != null)
+                    {
+                        //불 왼쪽에 불이 닿아 있다면 삭제
+                        // X축은 2칸 씩 불을 끌 수 있다
+                        Destroy(CD.cdr.DownCollis.GetComponent<FireDetector>().fr.gameObject);
+                    }
+                }
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
             }
@@ -304,6 +327,10 @@ public class Player1Controller : MonoBehaviour
                 player.transform.position = moving;
                 //최대 한 명만 구조할 수 있습니다
                 print("eekap");
+            }
+            else if (CD.hitFlame == true)
+            {
+                player.transform.position = moving;
             }
 
             // 닿아 있는 불이 없다면 이동

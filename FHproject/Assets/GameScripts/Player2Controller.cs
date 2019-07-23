@@ -38,11 +38,8 @@ public class Player2Controller : MonoBehaviour
 
     float P2_timer = 7.5f;
 
-    //AP회복, 타이머
     void Update()
     {
-        P2_timer = P2_timer - Time.deltaTime;
-
         //HP표시
         hp.text = string.Format("{0:f0}", " X " + player2HP);
 
@@ -140,6 +137,7 @@ public class Player2Controller : MonoBehaviour
             if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player2.transform.position = moving;
+
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
             }
@@ -178,11 +176,17 @@ public class Player2Controller : MonoBehaviour
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
             // 최대 움직일 수 있는 범위 설정
-            if (moving.x < -2.3f || (CD.hitFire == true || CD.hitFlame == true))
+            if (moving.x < -2.3f || CD.hitFire == true)
             {
                 player2.transform.position = moving;
                 //캐릭터와 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
+                
+                GM.playAP--;
+            }
+            else if (moving.x < -2.3f || CD.hitFlame == true)
+            {
+                player2.transform.position = moving;
                 Destroy(CD.inf.gameObject);
                 GM.playAP--;
             }
@@ -233,11 +237,17 @@ public class Player2Controller : MonoBehaviour
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
             // 최대 움직일 수 있는 범위 설정
-            if (moving.x > 2.0f || (CD.hitFire == true || CD.hitFlame == true))
+            if (moving.x > 2.0f || CD.hitFire == true)
             {
                 player2.transform.position = moving;
                 // 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
+                Destroy(CD.inf.gameObject);
+                GM.playAP--;
+            }
+            else if (moving.x > 2.0f || CD.hitFlame == true)
+            {
+                player2.transform.position = moving;
                 Destroy(CD.inf.gameObject);
                 GM.playAP--;
             }

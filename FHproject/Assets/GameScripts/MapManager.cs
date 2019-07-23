@@ -52,7 +52,7 @@ public class MapManager : MonoBehaviour
     int[] rnd_rescue_List = new int[11];
 
 
-    public GameObject[] inflameList;
+    
 
     GameObject stairs; //맵 가운데
     GameObject maps; // 일반 맵
@@ -61,16 +61,19 @@ public class MapManager : MonoBehaviour
     public GameObject prf_rescue; //환자 오브젝트 프리펩
     public GameObject GM;
     FireGenerator FG;
+    public GameObject[] inflameList;
+    GameObject[] FireInf;
 
     //맵 생성 기준 좌표
     float posX = -2.1f;
-    float posY = -1.5f;
+    float posY = -2.2f;
 
     //맵 생성
     void Awake()
     {
         CreateMap();
         
+
         main_Stage_Fire();
         side_Stage_Fire();
         FG = GameObject.Find("FireGenerator").GetComponent<FireGenerator>();
@@ -78,7 +81,12 @@ public class MapManager : MonoBehaviour
         main_Stage_Inflame();
         side_Stage_Inflame();
         inflameList = GameObject.FindGameObjectsWithTag("inflame");
-        //main_Stage_Rescue();
+        FireInf = new GameObject[FG.fires.Length + inflameList.Length];
+        System.Array.Copy(FG.fires, 0, FireInf, 0, FG.fires.Length);
+        System.Array.Copy(inflameList, 0, FireInf, FG.fires.Length, inflameList.Length);
+
+        main_Stage_Rescue();
+        side_Stage_Rescue();
     }
 
     void CreateMap()
@@ -580,152 +588,255 @@ public class MapManager : MonoBehaviour
         if (easy_rescue_Count != 0)
         {
             //생성 될 위치 잡기
-            for (int e = 0; e < FG.fires.Length; e++)
+            for (int e = 0; e < easy_rescue_Count; e++)
             {
                 //랜덤으로 위치 설정
                 rnd_rescue = easy_main_map[Random.Range(0, easy_main_map.Length)];
-                rnd_rescue_List[e] = rnd_rescue;
-                if((FG.fires[e].transform.position == mapCollect[rnd_rescue].transform.position) || (inflameList[e].transform.position == mapCollect[rnd_rescue].transform.position))
+                
+                for (int fi = 0; fi < FireInf.Length;  fi++)
                 {
-                    e--;
-                }
-                else if (FG.fires[e].transform.position != mapCollect[rnd_rescue].transform.position)
-                {
-                    for(int inf = 0; inf < inflameList.Length; inf++)
+                    if (FireInf[fi].transform.position == mapCollect[rnd_rescue].transform.position)
                     {
-                        if (inflameList[inf].transform.position == mapCollect[rnd_rescue].transform.position)
+                        e--;
+                        break;
+                    }
+                    else if (FireInf[fi].transform.position != mapCollect[rnd_rescue].transform.position)
+                    {
+                        rnd_rescue_List[e] = rnd_rescue;
+                        //중복 검사
+                        if (e != 0)
                         {
-                            inf--;
-                        }
-                        else if (inflameList[inf].transform.position != mapCollect[rnd_rescue].transform.position)
-                        {
-                            rnd_rescue_List[e] = rnd_rescue;
-                            //중복 검사
-                            if (e != 0)
+                            for (int j = 0; j < e; j++)
                             {
-                                for (int j = 0; j < e; j++)
+                                if (rnd_rescue_List[j] == rnd_rescue)
                                 {
-                                    if (rnd_rescue_List[j] == rnd_rescue)
-                                    {
-                                        e--;
-                                        break;
-                                    }
+                                    e--;
+                                    break;
                                 }
                             }
                         }
+                        
                     }
                 }
+                
             }
             for (int e = 0; e < easy_rescue_Count; e++)
             {
                 Instantiate(prf_rescue, mapCollect[rnd_rescue_List[e]].transform.position, transform.rotation);
             }
         }
-            /*
-            //easy 범위에 인화물질 생성
-            if (easy_rescue_Count != 0)
-            {
-                //생성 될 위치 잡기
-                for (int e = 0; e < easy_main_map.Length - FG.fires.Length; e++)
-                {
-                    //랜덤으로 위치 설정
-                    rnd_rescue = easy_main_map[Random.Range(0, easy_main_map.Length)];
 
-                    for (int fi = 0; fi < FG.fires.Length; fi++)
+        //nomal 범위에 환자 생성
+        if (nomal_rescue_Count != 0)
+        {
+            //생성 될 위치 잡기
+            for (int e = 0; e < nomal_rescue_Count; e++)
+            {
+                //랜덤으로 위치 설정
+                rnd_rescue = nomal_main_map[Random.Range(0, nomal_main_map.Length)];
+
+                for (int fi = 0; fi < FireInf.Length; fi++)
+                {
+                    if (FireInf[fi].transform.position == mapCollect[rnd_rescue].transform.position)
                     {
-                        if (FG.fires[fi].transform.position == mapCollect[rnd_rescue].transform.position)
+                        e--;
+                        break;
+                    }
+                    else if (FireInf[fi].transform.position != mapCollect[rnd_rescue].transform.position)
+                    {
+                        rnd_rescue_List[e] = rnd_rescue;
+                        //중복 검사
+                        if (e != 0)
                         {
-                            e--;
-                            break;
-                        }
-                        else if (FG.fires[fi].transform.position != mapCollect[rnd_rescue].transform.position)
-                        {
-                            rnd_rescue_List[e] = rnd_rescue;
-                            //중복 검사
-                            if (e != 0)
+                            for (int j = 0; j < e; j++)
                             {
-                                for (int j = 0; j < e; j++)
+                                if (rnd_rescue_List[j] == rnd_rescue)
                                 {
-                                    if (rnd_rescue_List[j] == rnd_rescue)
-                                    {
-                                        e--;
-                                        break;
-                                    }
+                                    e--;
+                                    break;
                                 }
                             }
                         }
-                    }
-                }
-            }
-            if (rnd_rescue_List.Length != 0)
-            {
-                //생성 될 위치 잡기
-                for (int e = 0; e < easy_rescue_Count; e++)
-                {
-                    for (int fir = 0; fir < inflameList.Length; fir++)
-                    {
-                        rnd_rescue = easy_main_map[Random.Range(0, easy_main_map.Length)];
 
-                        if (inflameList[fir].transform.position == mapCollect[rnd_rescue].transform.position)
-                        {
-                            e--;
-                            break;
-                        }
-                        else if (FG.fires[fi].transform.position != mapCollect[rnd_rescue].transform.position)
-                        {
-                            rnd_rescue_List[e] = rnd_rescue;
-                            //중복 검사
-                            if (e != 0)
-                            {
-                                for (int j = 0; j < e; j++)
-                                {
-                                    if (rnd_rescue_List[j] == rnd_rescue)
-                                    {
-                                        e--;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
+
             }
-            //생성
-            for (int e = 0; e < easy_rescue_Count; e++)
+            for (int e = 0; e < nomal_rescue_Count; e++)
             {
                 Instantiate(prf_rescue, mapCollect[rnd_rescue_List[e]].transform.position, transform.rotation);
             }
-            */
         }
+
+        //nomal 범위에 환자 생성
+        if (hard_rescue_Count != 0)
+        {
+            //생성 될 위치 잡기
+            for (int e = 0; e < hard_rescue_Count; e++)
+            {
+                //랜덤으로 위치 설정
+                rnd_rescue = hard_main_map[Random.Range(0, hard_main_map.Length)];
+
+                for (int fi = 0; fi < FireInf.Length; fi++)
+                {
+                    if (FireInf[fi].transform.position == mapCollect[rnd_rescue].transform.position)
+                    {
+                        e--;
+                        break;
+                    }
+                    else if (FireInf[fi].transform.position != mapCollect[rnd_rescue].transform.position)
+                    {
+                        rnd_rescue_List[e] = rnd_rescue;
+                        //중복 검사
+                        if (e != 0)
+                        {
+                            for (int j = 0; j < e; j++)
+                            {
+                                if (rnd_rescue_List[j] == rnd_rescue)
+                                {
+                                    e--;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            for (int e = 0; e < hard_rescue_Count; e++)
+            {
+                Instantiate(prf_rescue, mapCollect[rnd_rescue_List[e]].transform.position, transform.rotation);
+            }
+        }
+    }
 
     void side_Stage_Rescue()
     {
-        //else if (FG.fires[fi].transform.position != mapCollect[rnd_rescue].transform.position)
-        //{
-        //    for (int fir = 0; fir < inflameList.Length; fir++)
-        //    {
-        //        if (inflameList[fir].transform.position == mapCollect[rnd_rescue].transform.position)
-        //        {
-        //            fi--;
-        //            break;
-        //        }
-        //        else if (inflameList[fir].transform.position != mapCollect[rnd_rescue].transform.position)
-        //        {
-        //            rnd_rescue_List[e] = rnd_rescue;
-        //            //중복 검사
-        //            if (e != 0)
-        //            {
-        //                for (int j = 0; j < e; j++)
-        //                {
-        //                    if ((rnd_rescue_List[j] == rnd_rescue))
-        //                    {
-        //                        fir--;
-        //                        break;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        //easy 범위에 환자 생성
+        if (easyside_rescue_Count != 0)
+        {
+            //생성 될 위치 잡기
+            for (int e = 0; e < easyside_rescue_Count; e++)
+            {
+                //랜덤으로 위치 설정
+                rnd_rescue = easy_side_map[Random.Range(0, easy_side_map.Length)];
+
+                for (int fi = 0; fi < FireInf.Length; fi++)
+                {
+                    if (FireInf[fi].transform.position == mapCollect[rnd_rescue].transform.position)
+                    {
+                        e--;
+                        break;
+                    }
+                    else if (FireInf[fi].transform.position != mapCollect[rnd_rescue].transform.position)
+                    {
+                        rnd_rescue_List[e] = rnd_rescue;
+                        //중복 검사
+                        if (e != 0)
+                        {
+                            for (int j = 0; j < e; j++)
+                            {
+                                if (rnd_rescue_List[j] == rnd_rescue)
+                                {
+                                    e--;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            for (int e = 0; e < easyside_rescue_Count; e++)
+            {
+                Instantiate(prf_rescue, mapCollect[rnd_rescue_List[e]].transform.position, transform.rotation);
+            }
+        }
+
+        //nomal 범위에 환자 생성
+        if (nomalside_rescue_Count != 0)
+        {
+            //생성 될 위치 잡기
+            for (int e = 0; e < nomalside_rescue_Count; e++)
+            {
+                //랜덤으로 위치 설정
+                rnd_rescue = nomal_side_map[Random.Range(0, nomal_side_map.Length)];
+
+                for (int fi = 0; fi < FireInf.Length; fi++)
+                {
+                    if (FireInf[fi].transform.position == mapCollect[rnd_rescue].transform.position)
+                    {
+                        e--;
+                        break;
+                    }
+                    else if (FireInf[fi].transform.position != mapCollect[rnd_rescue].transform.position)
+                    {
+                        rnd_rescue_List[e] = rnd_rescue;
+                        //중복 검사
+                        if (e != 0)
+                        {
+                            for (int j = 0; j < e; j++)
+                            {
+                                if (rnd_rescue_List[j] == rnd_rescue)
+                                {
+                                    e--;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            for (int e = 0; e < nomalside_rescue_Count; e++)
+            {
+                Instantiate(prf_rescue, mapCollect[rnd_rescue_List[e]].transform.position, transform.rotation);
+            }
+        }
+
+        //nomal 범위에 환자 생성
+        if (hardside_rescue_Count != 0)
+        {
+            //생성 될 위치 잡기
+            for (int e = 0; e < hardside_rescue_Count; e++)
+            {
+                //랜덤으로 위치 설정
+                rnd_rescue = hard_side_map[Random.Range(0, hard_side_map.Length)];
+
+                for (int fi = 0; fi < FireInf.Length; fi++)
+                {
+                    if (FireInf[fi].transform.position == mapCollect[rnd_rescue].transform.position)
+                    {
+                        e--;
+                        break;
+                    }
+                    else if (FireInf[fi].transform.position != mapCollect[rnd_rescue].transform.position)
+                    {
+                        rnd_rescue_List[e] = rnd_rescue;
+                        //중복 검사
+                        if (e != 0)
+                        {
+                            for (int j = 0; j < e; j++)
+                            {
+                                if (rnd_rescue_List[j] == rnd_rescue)
+                                {
+                                    e--;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+            }
+            for (int e = 0; e < hardside_rescue_Count; e++)
+            {
+                Instantiate(prf_rescue, mapCollect[rnd_rescue_List[e]].transform.position, transform.rotation);
+            }
+        }
     }
 }

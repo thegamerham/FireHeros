@@ -24,7 +24,7 @@ public class Fire : MonoBehaviour
     //시간에 따라 불게이지 감소-> 불이 번지는 타이밍을 알려주는 UI
     void Update()
     {
-        hpb.fillAmount += 0.1f * Time.deltaTime;
+        hpb.fillAmount += 0.135f * Time.deltaTime;
         if(hpb.fillAmount == 1f)
         {
             hpb.fillAmount = 0f;
@@ -80,7 +80,7 @@ public class Fire : MonoBehaviour
                 nlocation.y += 0.7f;
 
                 //불의 윗쪽에 불이 없고 맵을 벗어나지 않았다면 생성
-                if (fd.hit == false && nlocation.y <= 4.8f)
+                if (fd.hit == false && nlocation.y <= 4.1f)
                 {
                     Instantiate(fr, nlocation, transform.rotation);
                 }

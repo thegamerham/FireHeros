@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public Text time;
     Button btn_exit;
-    public float timer = 15.0f;
+    public float timer = 10.0f;
 
     void Update()
     {
@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
         time.text = string.Format("{0:f1}", timer);
         if (timer <= 0.0f)
         {
-            timer = 15.0f;
+            timer = 10.0f;
         }
     }
 }

@@ -38,13 +38,9 @@ public class Player1Controller : MonoBehaviour
         playerHP = SUI.player1_HP;
     }
 
-    float P1_timer = 7.5f;
-
     //AP회복 타이머
     void Update()
     {
-        P1_timer -= Time.deltaTime;
-
         hp.text = string.Format("{0:f0}", " X " + playerHP);
         if(rescueMax == 0)
         {
@@ -76,7 +72,6 @@ public class Player1Controller : MonoBehaviour
             if(rescueMax == 0)
             {
                 rescueMax = 1;
-                Debug.Log("구조자 다이");
             }
             
         }
@@ -211,6 +206,10 @@ public class Player1Controller : MonoBehaviour
                 player.transform.position = moving;
                 //최대 한명만 구조할 수 있습니다
 
+            }
+            else if (CD.hitFlame == true)
+            {
+                player.transform.position = moving;
             }
 
             //불에 닿아 있지 않다면 이동

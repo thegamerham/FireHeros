@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             playAP = SUI.AP;
         }
         //AP 표시
-        ap.text = string.Format("{0:f0}", "남은 AP : " + playAP);
+        ap.text = string.Format("{0:f0}", "AP : " + playAP);
 
         if(FG.fires.Length == 0)
         {

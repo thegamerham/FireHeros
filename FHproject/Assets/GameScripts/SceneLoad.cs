@@ -7,10 +7,11 @@ public class SceneLoad : MonoBehaviour
 {
     public void Scen()
     {
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("MainScene");
     }
-    public void stage1()
+    public void stage()
     {
+        print(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("Stage1");
     }
 }

@@ -8,9 +8,12 @@ public class CharatorDetector : MonoBehaviour
     private bool isFire;
     [SerializeField]
     private bool isRescue;
+    [SerializeField]
+    private bool isFlame;
 
     public Fire cdr;
     public Rescue res;
+    public Inflame inf;
 
 
     public bool hitFire
@@ -23,11 +26,18 @@ public class CharatorDetector : MonoBehaviour
         get { return isRescue; }
     }
 
+    public bool hitFlame
+    {
+        get { return isFlame;  }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         isFire = false;
         isRescue = false;
+        isFlame = false;
+
     }
 
 
@@ -43,6 +53,11 @@ public class CharatorDetector : MonoBehaviour
             isRescue = true;
             res = collision.GetComponent<Rescue>();
         }
+        else if (collision.transform.tag == "inflame")
+        {
+            isFlame = true;
+            inf = collision.GetComponent<Inflame>();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -55,6 +70,11 @@ public class CharatorDetector : MonoBehaviour
         {
             isRescue = false;
             res = null;
+        }
+        else if (collision.transform.tag == "inflame")
+        {
+            isFlame = false;
+            inf = null;
         }
     }
 }

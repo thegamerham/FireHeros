@@ -49,11 +49,15 @@ public class Player2Controller : MonoBehaviour
         //구조자 표시
         if (rescueMax == 0)
         {
-            res.text = string.Format("{0:f0}", "      : " + (rescueMax + 1) + "명");
+            res.text = string.Format("{0:f0}", "      : " + 2 + "명");
         }
         else if (rescueMax == 1)
         {
-            res.text = string.Format("{0:f0}", "      : " + (rescueMax - 1) + "명");
+            res.text = string.Format("{0:f0}", "      : " + 1 + "명");
+        }
+        else if (rescueMax == 2)
+        {
+            res.text = string.Format("{0:f0}", "      : " + 0 + "명");
         }
 
         if (player2HP == 0)
@@ -74,7 +78,6 @@ public class Player2Controller : MonoBehaviour
             if (rescueMax == 0 || rescueMax == 1)
             {
                 rescueMax = 2;
-                Debug.Log("구조자 다이");
             }
         }
     }
@@ -175,11 +178,12 @@ public class Player2Controller : MonoBehaviour
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
             // 최대 움직일 수 있는 범위 설정
-            if (moving.x < -2.3f || CD.hitFire == true)
+            if (moving.x < -2.3f || (CD.hitFire == true || CD.hitFlame == true))
             {
                 player2.transform.position = moving;
                 //캐릭터와 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
+                Destroy(CD.inf.gameObject);
                 GM.playAP--;
             }
 
@@ -196,7 +200,6 @@ public class Player2Controller : MonoBehaviour
             {
                 player2.transform.position = moving;
                 //최대 두 명만 구조할 수 있습니다
-                print("eekap");
             }
 
             //불에 닿아 있지 않다면 이동
@@ -230,11 +233,12 @@ public class Player2Controller : MonoBehaviour
             //CharaterDetecter에 불이 닿았는지 판별
             //닿아 있다면 이동하지 않고 불을 끄는 행동을 한다. AP -1
             // 최대 움직일 수 있는 범위 설정
-            if (moving.x > 2.0f || CD.hitFire == true)
+            if (moving.x > 2.0f || (CD.hitFire == true || CD.hitFlame == true))
             {
                 player2.transform.position = moving;
                 // 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
+                Destroy(CD.inf.gameObject);
                 GM.playAP--;
             }
             //구조자를 업는다

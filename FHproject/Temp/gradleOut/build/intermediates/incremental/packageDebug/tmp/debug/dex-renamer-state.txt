@@ -1,0 +1,4 @@
+#Tue Jul 23 14:59:40 KST 2019
+base.0=C\:\\Users\\samsung\\Documents\\GitHub\\FireHeros\\FHproject\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

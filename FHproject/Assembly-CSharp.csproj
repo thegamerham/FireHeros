@@ -70,7 +70,6 @@
     <Compile Include="Assets\GameScripts\FireGenerator.cs" />
     <Compile Include="Assets\GameScripts\GameManager.cs" />
     <Compile Include="Assets\GameScripts\Inflame.cs" />
-    <Compile Include="Assets\GameScripts\LobyManager.cs" />
     <Compile Include="Assets\GameScripts\MapManager.cs" />
     <Compile Include="Assets\GameScripts\Player1Controller.cs" />
     <Compile Include="Assets\GameScripts\Player2Controller.cs" />
@@ -80,6 +79,7 @@
     <Compile Include="Assets\GameScripts\SceneLoad.cs" />
     <Compile Include="Assets\GameScripts\SelectCharacter.cs" />
     <Compile Include="Assets\GameScripts\StatusBuilUp.cs" />
+    <Compile Include="Assets\GameScripts\StatusManager.cs" />
     <Compile Include="Assets\GameScripts\Timer.cs" />
     <Compile Include="Assets\GameScripts\UIManager.cs" />
     <Compile Include="Assets\GameScripts\WindDir.cs" />

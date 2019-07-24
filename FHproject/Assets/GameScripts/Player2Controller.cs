@@ -36,25 +36,23 @@ public class Player2Controller : MonoBehaviour
         player2HP = SUI.player2_HP;
     }
 
-    float P2_timer = 7.5f;
-
     void Update()
     {
         //HP표시
-        hp.text = string.Format("{0:f0}", " X " + player2HP);
+        hp.text = string.Format("{0:f0}", " X" + player2HP);
 
         //구조자 표시
         if (rescueMax == 0)
         {
-            res.text = string.Format("{0:f0}", "      : " + 2 + "명");
+            res.text = string.Format("{0:f0}", "  X" + 2);
         }
         else if (rescueMax == 1)
         {
-            res.text = string.Format("{0:f0}", "      : " + 1 + "명");
+            res.text = string.Format("{0:f0}", "  X" + 1);
         }
         else if (rescueMax == 2)
         {
-            res.text = string.Format("{0:f0}", "      : " + 0 + "명");
+            res.text = string.Format("{0:f0}", "  X" + 0);
         }
 
         if (player2HP == 0)
@@ -242,7 +240,7 @@ public class Player2Controller : MonoBehaviour
                 player2.transform.position = moving;
                 // 닿아 있는 불 삭제
                 Destroy(CD.cdr.gameObject);
-                Destroy(CD.inf.gameObject);
+
                 GM.playAP--;
             }
             else if (moving.x > 2.0f || CD.hitFlame == true)

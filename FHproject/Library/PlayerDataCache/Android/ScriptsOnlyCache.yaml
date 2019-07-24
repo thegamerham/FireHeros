@@ -79,9 +79,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9396}
     - Class: 114
-      Script: {instanceID: 25118}
+      Script: {instanceID: 31334}
     - Class: 114
-      Script: {instanceID: 25120}
+      Script: {instanceID: 31336}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -337,7 +337,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10284}
     - Class: 114
-      Script: {instanceID: 12420}
+      Script: {instanceID: 12422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1218,4 +1218,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Stage1.unity
   - Assets/Scenes/GameOver.unity
   - Assets/Scenes/StageClear.unity
-  playerPath: C:/Users/samsung/Desktop/FH_Test01_17_1.apk
+  playerPath: C:/Users/samsung/Desktop/FH_Test01_17_4.apk

@@ -50,16 +50,16 @@ public class Player1Controller : MonoBehaviour
     //AP회복 타이머
     void Update()
     {
-        hp.text = string.Format("{0:f0}", " X " + playerHP);
+        hp.text = string.Format("{0:f0}", " X" + playerHP);
 
         //구조자 표시
         if (rescueMax == 0)
         {
-            res.text = string.Format("{0:f0}", "      : " + 1 + "명");
+            res.text = string.Format("{0:f0}", "  X" + 1);
         }
         else if (rescueMax == 1)
         {
-            res.text = string.Format("{0:f0}", "      : " + 0 + "명");
+            res.text = string.Format("{0:f0}", "  X" + 0);
         }
 
         AP_Checker();

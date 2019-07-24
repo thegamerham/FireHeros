@@ -21,6 +21,8 @@ public class Fire : MonoBehaviour
 
     public FireDetector fd;
 
+    Vector3 impo;
+
     //시간에 따라 불게이지 감소-> 불이 번지는 타이밍을 알려주는 UI
     void Update()
     {
@@ -36,6 +38,16 @@ public class Fire : MonoBehaviour
     public void Extinguish()
     {
         Destroy(gameObject);
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "fire")
+        {
+            impo = collision.transform.position;
+            Destroy(gameObject);
+            Instantiate(fr, impo, transform.rotation);
+        }
     }
 
     //확산된다

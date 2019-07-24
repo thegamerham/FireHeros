@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     public Text ap;
     public float playAP;
 
-    Timer TM;
     FireGenerator FG;
     SaveUserInfo SUI;
+    float times = 10f;
 
     private void Awake()
     {
@@ -21,21 +21,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        TM = GameObject.Find("Timer").GetComponent<Timer>();
         FG = GameObject.Find("FireGenerator").GetComponent<FireGenerator>();
         playAP = SUI.AP;
     }
 
     private void Update()
     {
+        times -= Time.deltaTime;
         //10초 마다 AP 회복
-        if((int)TM.timer <= 0f)
+        if(times <= 0f)
         {
-            Invoke("recoveryAP", 1f);
-            TM.timer = 10.0f;
+            times = 10.0f;
+            recoveryAP();
         }
         //AP 표시
-        ap.text = string.Format("{0:f0}", "AP : " + playAP);
+        ap.text = string.Format("{0:f0}", playAP);
 
         if(FG.fires.Length == 0)
         {
@@ -50,6 +50,5 @@ public class GameManager : MonoBehaviour
     void recoveryAP()
     {
         playAP = SUI.AP;
-        Debug.Log("recovery");
     }
 }

@@ -36,29 +36,53 @@ public class Player3Controller : MonoBehaviour
         }
 
         touchRay();
-        if (touchFire.transform.position == coll.transform.position)
+
+        if (touchFire && (touchFire.transform.position == coll.transform.position))
         {
-            Destroy(coll.gameObject);
+            if (coll.gameObject.transform.position.y < 0 && GM.playAP >= 3)
+            {
+                Destroy(coll.gameObject);
+                GM.playAP -= 3;
+            }
+            else if (coll.gameObject.transform.position.y < 2.1 && GM.playAP >= 4)
+            {
+                Destroy(coll.gameObject);
+                GM.playAP -= 4;
+            }
+            else if (coll.gameObject.transform.position.y < 4.2 && GM.playAP >= 5)
+            {
+                Destroy(coll.gameObject);
+                GM.playAP -= 5;
+            }
+            else
+                print("AP가 부족하여 끌 수 없음");
+            gameObject.transform.position = new Vector3(0, -2.2f, 0);
         }
     }
 
 
     //터치 된 불 끄기 : 타겟을 움직인 후 1초 내에 터치해야 꺼짐
-    public void OnTriggerEtner2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "fire")
         {
-            Debug.Log("타겟딩 : " + collision.gameObject.transform.position);
             coll = collision.gameObject;
         }
+
     }
 
     public GameObject touchRay()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-        Debug.Log("ray : " + hit.transform.position);
-        touchFire = hit.transform.gameObject;
+        touchFire = null;
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            if (hit.transform)
+            {
+                touchFire = hit.transform.gameObject;
+            }
+        }
 
         return touchFire;
     }

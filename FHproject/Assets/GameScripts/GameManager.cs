@@ -29,9 +29,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //10초 마다 AP 회복
-        if((int)TM.timer <= 0)
+        if((int)TM.timer <= 0f)
         {
-            playAP = SUI.AP;
+            Invoke("recoveryAP", 1f);
+            TM.timer = 10.0f;
         }
         //AP 표시
         ap.text = string.Format("{0:f0}", "AP : " + playAP);
@@ -44,5 +45,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    void recoveryAP()
+    {
+        playAP = SUI.AP;
+        Debug.Log("recovery");
     }
 }

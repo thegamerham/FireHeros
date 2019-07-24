@@ -36,7 +36,7 @@ public class Player1Controller : MonoBehaviour
 
     int playerHP;
     int rescueMax = 1; //구조 할 수 있는 최대 인원
-    //int safeman;
+    
     
 
     void Start()
@@ -89,6 +89,7 @@ public class Player1Controller : MonoBehaviour
         }
     }
 
+    //AP를 다 소모하면 버튼 비활성화
     public void AP_Checker()
     {
         if(GM.playAP == 0)
@@ -318,7 +319,7 @@ public class Player1Controller : MonoBehaviour
             {
                 player.transform.position = moving;
                 Destroy(CD.res.gameObject);
-                GM.playAP -= 1.0f;
+                GM.playAP -= 1;
                 rescueMax--;
             }
             //구조할 수 있는 한계치가 있다

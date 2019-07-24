@@ -14,6 +14,15 @@ public class Player3Controller : MonoBehaviour
     GameObject coll;
     GameManager GM;
 
+    [SerializeField]
+    Button btn_Up;
+    [SerializeField]
+    Button btn_Down;
+    [SerializeField]
+    Button btn_Left;
+    [SerializeField]
+    Button btn_Right;
+
     Touch t;
 
     Vector3 moving = new Vector3(0, 0, 0);
@@ -34,7 +43,7 @@ public class Player3Controller : MonoBehaviour
         {
             timer = 15.0f;
         }
-
+        AP_Checker();
         touchRay();
 
         if (touchFire && (touchFire.transform.position == coll.transform.position))
@@ -61,16 +70,35 @@ public class Player3Controller : MonoBehaviour
     }
 
 
-    //터치 된 불 끄기 : 타겟을 움직인 후 1초 내에 터치해야 꺼짐
+    //터치 된 불 끄기 : 타겟을 움직인 후 터치
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "fire")
         {
             coll = collision.gameObject;
         }
-
     }
 
+    //AP를 다 소모하면 버튼 비활성화
+    public void AP_Checker()
+    {
+        if (GM.playAP == 0)
+        {
+            btn_Up.GetComponent<Button>().interactable = false;
+            btn_Down.GetComponent<Button>().interactable = false;
+            btn_Left.GetComponent<Button>().interactable = false;
+            btn_Right.GetComponent<Button>().interactable = false;
+        }
+        else if (GM.playAP != 0)
+        {
+            btn_Up.GetComponent<Button>().interactable = true;
+            btn_Down.GetComponent<Button>().interactable = true;
+            btn_Left.GetComponent<Button>().interactable = true;
+            btn_Right.GetComponent<Button>().interactable = true;
+        }
+    }
+
+    //화면 터치 판정
     public GameObject touchRay()
     {
         touchFire = null;

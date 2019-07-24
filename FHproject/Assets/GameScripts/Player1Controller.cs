@@ -47,7 +47,7 @@ public class Player1Controller : MonoBehaviour
         playerHP = SUI.player1_HP;
     }
 
-    //AP회복 타이머
+    //캐릭터 판정
     void Update()
     {
         hp.text = string.Format("{0:f0}", " X" + playerHP);
@@ -73,6 +73,7 @@ public class Player1Controller : MonoBehaviour
 
     }
     
+    //불에 피격
     public void OnTriggerStay2D(Collider2D collision)
     {
         //불에 닿으면 HP - 1 and 캐릭터와 겹쳐진 불은 삭제
@@ -87,6 +88,15 @@ public class Player1Controller : MonoBehaviour
             }
             
         }
+    }
+
+    public void MainLayer()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+    }
+    public void SecondLayer()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
     }
 
     //AP를 다 소모하면 버튼 비활성화

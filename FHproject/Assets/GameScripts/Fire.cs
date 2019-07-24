@@ -40,16 +40,6 @@ public class Fire : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "fire")
-        {
-            impo = collision.transform.position;
-            Destroy(gameObject);
-            Instantiate(fr, impo, transform.rotation);
-        }
-    }
-
     //확산된다
     public void deffusionFire(int windDir)
     {
@@ -79,7 +69,7 @@ public class Fire : MonoBehaviour
                 nlocation = transform.position;
                 nlocation.x += 0.7f;
 
-                //불의 오른쪽에 불이 업고 맵을 벗어나지 않았다면 생성
+                //불의 오른쪽에 불이 없고 맵을 벗어나지 않았다면 생성
                 if (fd.hit == false && nlocation.x <= 2.3f)
                 {
                     Instantiate(fr, nlocation, transform.rotation);

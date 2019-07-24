@@ -15,6 +15,15 @@ public class Player2Controller : MonoBehaviour
     public GameObject P_UpCollis;
     public GameObject P_DownCollis;
 
+    [SerializeField]
+    Button btn_Up;
+    [SerializeField]
+    Button btn_Down;
+    [SerializeField]
+    Button btn_Left;
+    [SerializeField]
+    Button btn_Right;
+
     public Text hp;
     public Text res;
 
@@ -40,7 +49,7 @@ public class Player2Controller : MonoBehaviour
     {
         //HP표시
         hp.text = string.Format("{0:f0}", " X" + player2HP);
-
+        AP_Checker();
         //구조자 표시
         if (rescueMax == 0)
         {
@@ -75,6 +84,34 @@ public class Player2Controller : MonoBehaviour
                 rescueMax = 2;
             }
         }
+    }
+
+    //AP를 다 소모하면 버튼 비활성화
+    public void AP_Checker()
+    {
+        if (GM.playAP == 0)
+        {
+            btn_Up.GetComponent<Button>().interactable = false;
+            btn_Down.GetComponent<Button>().interactable = false;
+            btn_Left.GetComponent<Button>().interactable = false;
+            btn_Right.GetComponent<Button>().interactable = false;
+        }
+        else if (GM.playAP != 0)
+        {
+            btn_Up.GetComponent<Button>().interactable = true;
+            btn_Down.GetComponent<Button>().interactable = true;
+            btn_Left.GetComponent<Button>().interactable = true;
+            btn_Right.GetComponent<Button>().interactable = true;
+        }
+    }
+
+    public void MainLayer()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+    }
+    public void SecondLayer()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
     }
 
     // +Y 이동

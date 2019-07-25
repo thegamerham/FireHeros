@@ -55,23 +55,24 @@ public class WindDir : MonoBehaviour
         //왼쪽
         if(futureWind == 0)
         {
-            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 90);
+            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 270);
         }
         //오른쪽
         else if (futureWind == 1)
         {
-            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 270);
+            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
         //북쪽
         else if (futureWind == 2)
         {
-            this.img_dir.transform.rotation = Quaternion.identity;
+            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 180);
         }
 
         //아래
         else if (futureWind == 3)
         {
-            this.img_dir.transform.rotation = Quaternion.Euler(0, 0, 180);
+            this.img_dir.transform.rotation = Quaternion.identity;
+            
         }
 
     }

@@ -111,6 +111,14 @@ public class SceneLoad : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+
+
+    //재도전
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void stage1_1()
     {
 

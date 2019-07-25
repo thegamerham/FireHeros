@@ -64,6 +64,8 @@ public class MapManager : MonoBehaviour
     public GameObject[] inflameList;
     GameObject[] FireInf;
 
+    public int RescueCount;
+
     //맵 생성 기준 좌표
     float posX = -2.1f;
     float posY = -2.2f;
@@ -73,7 +75,6 @@ public class MapManager : MonoBehaviour
     {
         CreateMap();
         
-
         main_Stage_Fire();
         side_Stage_Fire();
         FG = GameObject.Find("FireGenerator").GetComponent<FireGenerator>();
@@ -84,9 +85,18 @@ public class MapManager : MonoBehaviour
         FireInf = new GameObject[FG.fires.Length + inflameList.Length];
         System.Array.Copy(FG.fires, 0, FireInf, 0, FG.fires.Length);
         System.Array.Copy(inflameList, 0, FireInf, FG.fires.Length, inflameList.Length);
-
         main_Stage_Rescue();
         side_Stage_Rescue();
+        FireInf = GameObject.FindGameObjectsWithTag("rescue");
+
+        //구조자 총 숫자 파악용
+        RescueCount = FireInf.Length;
+    }
+
+    private void Update()
+    {
+        FireInf = GameObject.FindGameObjectsWithTag("rescue");
+        RescueCount = FireInf.Length;
     }
 
     void CreateMap()

@@ -32,6 +32,7 @@ public class Player2Controller : MonoBehaviour
     WaterController WC;
 
     GameObject player2; //player 오브젝트
+    GameObject Controller2;
 
     Vector3 moving = new Vector3(0, 0, 0);
 
@@ -45,12 +46,13 @@ public class Player2Controller : MonoBehaviour
         SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
         WC = GameObject.Find("WaterGenerator").GetComponent<WaterController>();
         player2HP = SUI.player2_HP;
+        Controller2 = GameObject.Find("P2_btn");
     }
 
     void Update()
     {
         //HP표시
-        hp.text = string.Format("{0:f0}", " X" + player2HP);
+        hp.text = string.Format("{0:f0}", "  X" + player2HP);
         AP_Checker();
         //구조자 표시
         if (rescueMax == 0)
@@ -70,6 +72,7 @@ public class Player2Controller : MonoBehaviour
         {
             Destroy(gameObject);
             hp.text = "사망";
+            GM.playerDieCount++;
         }
     }
 
@@ -81,9 +84,15 @@ public class Player2Controller : MonoBehaviour
             player2HP = player2HP - 1;
 
             Destroy(collision.gameObject);
-            if (rescueMax == 0 || rescueMax == 1)
+            if (rescueMax == 0)
             {
                 rescueMax = 2;
+                GM.rescueDieCount += 2;
+            }
+            else if (rescueMax == 1)
+            {
+                rescueMax = 2;
+                GM.rescueDieCount++;
             }
         }
     }
@@ -188,10 +197,15 @@ public class Player2Controller : MonoBehaviour
                 GM.playAP--;
 
                 //구조자를 업은 상태이고 출구로 나오면 구조 성공
-                if (player2.transform.position.y == -2.2f && rescueMax <= 1)
+                if (player2.transform.position.y == -2.2f && rescueMax == 1)
                 {
                     rescueMax = 2;
-                    Debug.Log("환자 구함");
+                    GM.rescueCount++;
+                }
+                else if (player2.transform.position.y == -2.2f && rescueMax == 0)
+                {
+                    rescueMax = 2;
+                    GM.rescueCount += 2;
                 }
             }
         }

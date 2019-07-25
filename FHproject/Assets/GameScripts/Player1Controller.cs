@@ -29,6 +29,7 @@ public class Player1Controller : MonoBehaviour
     public Text res;
 
     GameObject player; //player 오브젝트
+    GameObject Controller;
     GameManager GM;
     SaveUserInfo SUI;
 
@@ -38,6 +39,7 @@ public class Player1Controller : MonoBehaviour
 
     int playerHP;
     int rescueMax = 1; //구조 할 수 있는 최대 인원
+    
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class Player1Controller : MonoBehaviour
         SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
         playerHP = SUI.player1_HP;
         WC = GameObject.Find("WaterGenerator").GetComponent<WaterController>();
+        Controller = GameObject.Find("P1_btn");
     }
 
     //캐릭터 판정
@@ -68,8 +71,8 @@ public class Player1Controller : MonoBehaviour
         if (playerHP == 0)
         {
             Destroy(gameObject);
-
-            hp.text = " 사망";
+            hp.text = "사망";
+            GM.playerDieCount++;
         }
 
     }
@@ -86,11 +89,13 @@ public class Player1Controller : MonoBehaviour
             if(rescueMax == 0)
             {
                 rescueMax = 1;
+                GM.rescueDieCount++;
             }
             
         }
     }
 
+    //캐릭터 전환 시 우선 레이어 배치
     public void MainLayer()
     {
         this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
@@ -220,8 +225,7 @@ public class Player1Controller : MonoBehaviour
                 if(player.transform.position.y == -2.2f && rescueMax == 0)
                 {
                     rescueMax = 1;
-                    //safeman++;
-                    //safe.text = string.Format("{0:f0}", "구조자 : " + safeman + "명");
+                    GM.rescueCount++;
                 }
             }
         }

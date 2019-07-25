@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Animations;
 
 public class Player1Controller : MonoBehaviour
 {
@@ -36,8 +37,10 @@ public class Player1Controller : MonoBehaviour
 
     int playerHP;
     int rescueMax = 1; //구조 할 수 있는 최대 인원
-    
-    
+
+    Animator anim;
+
+    bool fireDie = false;
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class Player1Controller : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
         playerHP = SUI.player1_HP;
+        anim = GetComponent<Animator>();
     }
 
     //캐릭터 판정
@@ -151,6 +155,7 @@ public class Player1Controller : MonoBehaviour
                     {
                         //불 왼쪽에 불이 닿아 있다면 삭제
                         // X축은 2칸 씩 불을 끌 수 있다
+                        anim.SetBool("fireDie", true);
                         Destroy(CD.cdr.UpCollis.GetComponent<FireDetector>().fr.gameObject);
                     }
                     

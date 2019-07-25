@@ -622,7 +622,6 @@ GameObject:
   - component: {fileID: 8482237330951412148}
   - component: {fileID: 8482237330951412151}
   - component: {fileID: 8482237330951412150}
-  - component: {fileID: -7816169067936854581}
   m_Layer: 9
   m_Name: Fire
   m_TagString: fire
@@ -764,21 +763,6 @@ MonoBehaviour:
   UpCollis: {fileID: 8482237331342572032}
   DownCollis: {fileID: 8482237330606132498}
   fd: {fileID: 0}
---- !u!111 &-7816169067936854581
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8482237330951412153}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: f0da100b524b3b4478d58b7e06f46cbc, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &8482237331342572032
 GameObject:
   m_ObjectHideFlags: 0

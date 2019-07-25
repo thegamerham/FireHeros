@@ -87,22 +87,6 @@
     <Compile Include="Assets\GameScripts\UIManager.cs" />
     <Compile Include="Assets\GameScripts\WaterController.cs" />
     <Compile Include="Assets\GameScripts\WindDir.cs" />
-    <Compile Include="Assets\layer\MainScripts\character.cs" />
-    <Compile Include="Assets\layer\MainScripts\empower.cs" />
-    <Compile Include="Assets\layer\MainScripts\hpUp.cs" />
-    <Compile Include="Assets\layer\MainScripts\moveLobby.cs" />
-    <Compile Include="Assets\layer\MainScripts\powerUp.cs" />
-    <Compile Include="Assets\layer\MainScripts\rangeUp.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill1.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill2.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill3.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill4.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill5.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill6.cs" />
-    <Compile Include="Assets\layer\MainScripts\skill7.cs" />
-    <Compile Include="Assets\layer\MainScripts\stagePOPUP.cs" />
-    <Compile Include="Assets\layer\MainScripts\StatusBuildUp.cs" />
     <Compile Include="Assets\MainScripts\stagePOPUP.cs" />
     <Compile Include="Assets\Scenes\currentStageClear.cs" />
     <Compile Include="Assets\Scenes\dialog.cs" />
@@ -309,9 +293,6 @@
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -320,9 +301,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

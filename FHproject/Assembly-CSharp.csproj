@@ -62,8 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EndingScripts\Ending.cs" />
-    <Compile Include="Assets\EndingScripts\gototitle.cs" />
     <Compile Include="Assets\GameScripts\Character.cs" />
     <Compile Include="Assets\GameScripts\CharatorDetector.cs" />
     <Compile Include="Assets\GameScripts\Fire.cs" />
@@ -87,14 +85,22 @@
     <Compile Include="Assets\GameScripts\UIManager.cs" />
     <Compile Include="Assets\GameScripts\WaterController.cs" />
     <Compile Include="Assets\GameScripts\WindDir.cs" />
-    <Compile Include="Assets\MainScripts\stagePOPUP.cs" />
-    <Compile Include="Assets\Scenes\currentStageClear.cs" />
-    <Compile Include="Assets\Scenes\dialog.cs" />
-    <Compile Include="Assets\Scenes\dialogAdd.cs" />
-    <Compile Include="Assets\Scenes\fade.cs" />
-    <Compile Include="Assets\Scenes\FadeScript.cs" />
-    <Compile Include="Assets\Scenes\Shake.cs" />
-    <Compile Include="Assets\Scenes\TutorialScene.cs" />
+    <Compile Include="Assets\layer\MainScripts\character.cs" />
+    <Compile Include="Assets\layer\MainScripts\empower.cs" />
+    <Compile Include="Assets\layer\MainScripts\hpUp.cs" />
+    <Compile Include="Assets\layer\MainScripts\moveLobby.cs" />
+    <Compile Include="Assets\layer\MainScripts\powerUp.cs" />
+    <Compile Include="Assets\layer\MainScripts\rangeUp.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill1.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill2.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill3.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill4.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill5.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill6.cs" />
+    <Compile Include="Assets\layer\MainScripts\skill7.cs" />
+    <Compile Include="Assets\layer\MainScripts\stagePOPUP.cs" />
+    <Compile Include="Assets\layer\MainScripts\StatusBuildUp.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

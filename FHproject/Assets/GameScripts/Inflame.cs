@@ -17,7 +17,7 @@ public class Inflame : MonoBehaviour
     {
         if(collision.gameObject.tag == "fire")
         {
-            StartCoroutine(delay());
+            //StartCoroutine(delay());
             for (int i = 0; i<4; i++)
             {
                 boomFire(i);
@@ -26,10 +26,10 @@ public class Inflame : MonoBehaviour
         }
     }
 
-    IEnumerator delay()
-    {
-        yield return new WaitForSeconds(0.5f);
-    }
+    //IEnumerator delay()
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //}
     
     public void boomFire(int windDir)
     {
@@ -84,15 +84,7 @@ public class Inflame : MonoBehaviour
                     Instantiate(fr, nlocation, transform.rotation);
                 }
                 break;
-            //case 4://중앙
-            //
-            //    fd = DownCollis.GetComponent<FireDetector>();
-            //
-            //    nlocation = transform.position;
-            //
-            //    Instantiate(fr, nlocation, transform.rotation);
-            //
-            //    break;
+
         }
 
     }

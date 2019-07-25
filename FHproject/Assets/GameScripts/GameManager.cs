@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("StageClear");
         }
-        else if(FG.fires.Length >= 60)
+        else if(FG.fires.Length >= 56)
         {
             SceneManager.LoadScene("GameOver");
         }
@@ -50,5 +50,14 @@ public class GameManager : MonoBehaviour
     void recoveryAP()
     {
         playAP = SUI.AP;
+    }
+
+    void GameClear()
+    {
+        if (FG.fires.Length == 0)
+        {
+            //팝업
+
+        }
     }
 }

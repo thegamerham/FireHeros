@@ -8,7 +8,6 @@ public class SceneLoad : MonoBehaviour
 {//1-3을 제외하면 전부다 2가 플레이씬
     public Image fadeImage;
     public GameObject fadeOnOff;
-    //public GameObject skip;
     SaveUserInfo SUI;
 
 
@@ -18,47 +17,12 @@ public class SceneLoad : MonoBehaviour
     }
     void Start()
     {
-
-        
-        
         fadeImage.canvasRenderer.SetAlpha(1.0f);
         
         fadeImage.CrossFadeAlpha(0, 2, false);
         
         Invoke("panelCancel", 2f);
         
-    }
-    private void Update()
-    {
-        setupCamera();
-    }
-
-    public void setupCamera()
-    {
-        float targetWidthAspect = 16.0f;
-
-        float targetHeightAspect = 10.0f;
-
-        Camera mainCamera = Camera.main;
-
-        mainCamera.aspect = targetWidthAspect / targetHeightAspect;
-
-        float widthRatio = (float)Screen.width / targetWidthAspect;
-        float heightRatio = (float)Screen.height / targetHeightAspect;
-
-        float heightadd = ((widthRatio / (heightRatio / 100)) - 100) / 200;
-        float widthadd = ((heightRatio / (widthRatio / 100)) - 100) / 200;
-
-        if (heightRatio > widthRatio)
-            widthadd = 0.0f;
-        else
-            heightadd = 0.0f;
-
-        mainCamera.rect = new Rect(
-        mainCamera.rect.x + Mathf.Abs(widthadd),
-        mainCamera.rect.y + Mathf.Abs(heightadd),
-        mainCamera.rect.width + (widthadd * 2),
-        mainCamera.rect.height + (heightadd * 2));
     }
 
     public void Scene() // 2초뒤 Scenecall을 부른다.

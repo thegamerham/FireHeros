@@ -84,66 +84,6 @@ public class stagePOPUP : MonoBehaviour
 
     public void stage1()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("stage1_3");
     }
-
-
-
-
-
-    /*
-    public void moveStage()
-    {
-        Debug.Log("스테이지로 이동합니다.");
-    }
-
-    public void pressPass1()
-    {
-        firefighter = 1;
-        Debug.Log(firefighter);
-    }
-    public void pressPass2()
-    {
-        firefighter = 2;
-        Debug.Log(firefighter);
-    }
-    public void pressPass3()
-    {
-        firefighter = 3;
-        Debug.Log(firefighter);
-    }
-    public void skillpressMinus1()
-    {
-        if (Player.GetComponent<character>().remainSp > 0)
-        {
-            Player.GetComponent<character>().remainSp -= Player.GetComponent<powerUp>().skillPoint;
-            Debug.Log(Player.GetComponent<character>().remainSp);
-        }
-        else
-        {
-            Debug.Log("SP가 부족합니다!");
-        }
-    }
-    public void skillpressPlus1()
-    { 
-            Player.GetComponent<character>().remainSp += Player.GetComponent<skill>().skillPoint;
-            Debug.Log(Player.GetComponent<character>().remainSp);   
-    }
-    public void skillpressMinus2()
-    {
-        if (Player.GetComponent<character>().remainSp > 0)
-        {
-            Player.GetComponent<character>().remainSp -= Player.GetComponent<rangeUp>().skillPoint;
-            Debug.Log(Player.GetComponent<character>().remainSp);
-        }
-        else
-            Debug.Log("SP가 부족합니다!");
-    }
-    public void skillpressPlus2()
-    {
-        Player.GetComponent<character>().remainSp += Player.GetComponent<rangeUp>().skillPoint;
-        Debug.Log(Player.GetComponent<character>().remainSp);
-    }
-    */
-
 }

@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2F5240B3-78F7-3E44-96F5-B6825C31D083}</ProjectGuid>
+    <ProjectGuid>{9C65B29C-0F3D-AEB2-56AA-B8C13DD7745A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,8 +62,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EndingScripts\currentStageClear.cs" />
+    <Compile Include="Assets\EndingScripts\dialog.cs" />
+    <Compile Include="Assets\EndingScripts\dialogAdd.cs" />
     <Compile Include="Assets\EndingScripts\Ending.cs" />
+    <Compile Include="Assets\EndingScripts\fade.cs" />
+    <Compile Include="Assets\EndingScripts\FadeScript.cs" />
     <Compile Include="Assets\EndingScripts\gototitle.cs" />
+    <Compile Include="Assets\EndingScripts\Shake.cs" />
+    <Compile Include="Assets\EndingScripts\stagePOPUP.cs" />
+    <Compile Include="Assets\EndingScripts\TutorialScene.cs" />
+    <Compile Include="Assets\GameQuit.cs" />
     <Compile Include="Assets\GameScripts\Character.cs" />
     <Compile Include="Assets\GameScripts\CharatorDetector.cs" />
     <Compile Include="Assets\GameScripts\Fire.cs" />
@@ -79,55 +88,35 @@
     <Compile Include="Assets\GameScripts\Rescue.cs" />
     <Compile Include="Assets\GameScripts\SaveUserInfo.cs" />
     <Compile Include="Assets\GameScripts\SceneLoad.cs" />
+    <Compile Include="Assets\GameScripts\ScreenSetting.cs" />
     <Compile Include="Assets\GameScripts\SelectCharacter.cs" />
     <Compile Include="Assets\GameScripts\StatusBuilUp.cs" />
     <Compile Include="Assets\GameScripts\StatusManager.cs" />
     <Compile Include="Assets\GameScripts\Timer.cs" />
     <Compile Include="Assets\GameScripts\UIManager.cs" />
+    <Compile Include="Assets\GameScripts\WaterController.cs" />
     <Compile Include="Assets\GameScripts\WindDir.cs" />
-    <Compile Include="Assets\MainScripts\character.cs" />
-    <Compile Include="Assets\MainScripts\empower.cs" />
-    <Compile Include="Assets\MainScripts\hpUp.cs" />
-    <Compile Include="Assets\MainScripts\moveLobby.cs" />
-    <Compile Include="Assets\MainScripts\powerUp.cs" />
-    <Compile Include="Assets\MainScripts\rangeUp.cs" />
-    <Compile Include="Assets\MainScripts\skill.cs" />
-    <Compile Include="Assets\MainScripts\skill1.cs" />
-    <Compile Include="Assets\MainScripts\skill2.cs" />
-    <Compile Include="Assets\MainScripts\skill3.cs" />
-    <Compile Include="Assets\MainScripts\skill4.cs" />
-    <Compile Include="Assets\MainScripts\skill5.cs" />
-    <Compile Include="Assets\MainScripts\skill6.cs" />
-    <Compile Include="Assets\MainScripts\skill7.cs" />
-    <Compile Include="Assets\MainScripts\stagePOPUP.cs" />
-    <Compile Include="Assets\MainScripts\StatusBuildUp.cs" />
-    <Compile Include="Assets\Scenes\currentStageClear.cs" />
-    <Compile Include="Assets\Scenes\dialog.cs" />
-    <Compile Include="Assets\Scenes\dialogAdd.cs" />
-    <Compile Include="Assets\Scenes\fade.cs" />
-    <Compile Include="Assets\Scenes\FadeScript.cs" />
-    <Compile Include="Assets\Scenes\Shake.cs" />
-    <Compile Include="Assets\Scenes\TutorialScene.cs" />
+    <Compile Include="Assets\Script\SetVolume.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -307,13 +296,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/6_KGA_22/Desktop/7월 25일/합본6차/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/samsung/Documents/GitHub/FireHeros/FHproject/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.8f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

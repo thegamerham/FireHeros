@@ -77,11 +77,13 @@
     <Compile Include="Assets\GameScripts\Rescue.cs" />
     <Compile Include="Assets\GameScripts\SaveUserInfo.cs" />
     <Compile Include="Assets\GameScripts\SceneLoad.cs" />
+    <Compile Include="Assets\GameScripts\ScreenSetting.cs" />
     <Compile Include="Assets\GameScripts\SelectCharacter.cs" />
     <Compile Include="Assets\GameScripts\StatusBuilUp.cs" />
     <Compile Include="Assets\GameScripts\StatusManager.cs" />
     <Compile Include="Assets\GameScripts\Timer.cs" />
     <Compile Include="Assets\GameScripts\UIManager.cs" />
+    <Compile Include="Assets\GameScripts\WaterController.cs" />
     <Compile Include="Assets\GameScripts\WindDir.cs" />
     <Compile Include="Assets\layer\MainScripts\character.cs" />
     <Compile Include="Assets\layer\MainScripts\empower.cs" />

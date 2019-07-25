@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Animations;
 
 public class Player1Controller : MonoBehaviour
 {
@@ -27,17 +26,18 @@ public class Player1Controller : MonoBehaviour
 
     public Text hp;
     public Text res;
+   // public Text safe;
 
     GameObject player; //player 오브젝트
     GameManager GM;
     SaveUserInfo SUI;
 
-    WaterController WC;
-
     Vector3 moving = new Vector3(0, 0, 0);
 
     int playerHP;
     int rescueMax = 1; //구조 할 수 있는 최대 인원
+    
+    
 
     void Start()
     {
@@ -45,7 +45,6 @@ public class Player1Controller : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
         playerHP = SUI.player1_HP;
-        WC = GameObject.Find("WaterGenerator").GetComponent<WaterController>();
     }
 
     //캐릭터 판정
@@ -151,14 +150,11 @@ public class Player1Controller : MonoBehaviour
                     if (CD.cdr.UpCollis.GetComponent<FireDetector>().fr != null)
                     {
                         //불 왼쪽에 불이 닿아 있다면 삭제
-                        moving = CD.cdr.UpCollis.GetComponent<FireDetector>().fr.gameObject.transform.position;
-                        WC.waterAction(moving);
+                        // X축은 2칸 씩 불을 끌 수 있다
                         Destroy(CD.cdr.UpCollis.GetComponent<FireDetector>().fr.gameObject);
                     }
                     
                 }
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.cdr.gameObject); // 닿아 있는 불 제거
                 GM.playAP--;
                 
@@ -200,13 +196,10 @@ public class Player1Controller : MonoBehaviour
                     if (CD.cdr.DownCollis.GetComponent<FireDetector>().fr != null)
                     {
                         //불 왼쪽에 불이 닿아 있다면 삭제
-                        moving = CD.cdr.DownCollis.GetComponent<FireDetector>().fr.gameObject.transform.position;
-                        WC.waterAction(moving);
+                        // X축은 2칸 씩 불을 끌 수 있다
                         Destroy(CD.cdr.DownCollis.GetComponent<FireDetector>().fr.gameObject);
                     }
                 }
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
             }
@@ -255,15 +248,9 @@ public class Player1Controller : MonoBehaviour
                 {
                     //불 왼쪽에 불이 닿아 있다면 삭제
                     // X축은 2칸 씩 불을 끌 수 있다
-                    //moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                    //WC.water(moving.x, moving.y, moving.z);
-                    moving = CD.cdr.LeftCollis.GetComponent<FireDetector>().fr.gameObject.transform.position;
-                    WC.waterAction(moving);
                     Destroy(CD.cdr.LeftCollis.GetComponent<FireDetector>().fr.gameObject);
                 }
                 //캐릭터와 닿아 있는 불 삭제
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
             }
@@ -329,14 +316,10 @@ public class Player1Controller : MonoBehaviour
                 {
                     //불 오른쪽에 불이 닿아 있다면 삭제
                     // X축은 2칸 씩 불을 끌 수 있다
-                    moving = CD.cdr.RightCollis.GetComponent<FireDetector>().fr.gameObject.transform.position;
-                    WC.waterAction(moving);
                     Destroy(CD.cdr.RightCollis.GetComponent<FireDetector>().fr.gameObject);
                 }
 
                 // 닿아 있는 불 삭제
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.cdr.gameObject);
                 GM.playAP -= 1.0f;
             }

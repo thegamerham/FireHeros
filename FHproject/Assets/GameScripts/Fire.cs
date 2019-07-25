@@ -23,13 +23,6 @@ public class Fire : MonoBehaviour
 
     Vector3 impo;
 
-    Animator AT;
-
-    private void Start()
-    {
-        AT = GetComponent<Animator>();
-    }
-
     //시간에 따라 불게이지 감소-> 불이 번지는 타이밍을 알려주는 UI
     void Update()
     {
@@ -42,9 +35,9 @@ public class Fire : MonoBehaviour
     //불이 가지는 기능
 
     //진화된다
-    public void dieyo()
+    public void Extinguish()
     {
-        AT.SetBool("firedie", true);
+        Destroy(gameObject);
     }
 
     //확산된다

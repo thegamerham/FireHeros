@@ -29,7 +29,6 @@ public class Player2Controller : MonoBehaviour
 
     GameManager GM;
     SaveUserInfo SUI;
-    WaterController WC;
 
     GameObject player2; //player 오브젝트
 
@@ -43,7 +42,6 @@ public class Player2Controller : MonoBehaviour
         player2 = this.gameObject;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SUI = GameObject.Find("SaveUserInfo").GetComponent<SaveUserInfo>();
-        WC = GameObject.Find("WaterGenerator").GetComponent<WaterController>();
         player2HP = SUI.player2_HP;
     }
 
@@ -139,8 +137,6 @@ public class Player2Controller : MonoBehaviour
             if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player2.transform.position = moving; //이동하지 않음
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.cdr.gameObject); // 닿아 있는 불 제거
                 GM.playAP--;
             }
@@ -176,8 +172,7 @@ public class Player2Controller : MonoBehaviour
             if (CD.hitFire == true && (moving.x >= -0.1 && moving.x <= 0.1))
             {
                 player2.transform.position = moving;
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
+
                 Destroy(CD.cdr.gameObject);
                 GM.playAP--;
             }
@@ -220,8 +215,6 @@ public class Player2Controller : MonoBehaviour
             {
                 player2.transform.position = moving;
                 //캐릭터와 닿아 있는 불 삭제
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.cdr.gameObject);
                 
                 GM.playAP--;
@@ -229,8 +222,6 @@ public class Player2Controller : MonoBehaviour
             else if (moving.x < -2.3f || CD.hitFlame == true)
             {
                 player2.transform.position = moving;
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.inf.gameObject);
                 GM.playAP--;
             }
@@ -292,8 +283,6 @@ public class Player2Controller : MonoBehaviour
             else if (moving.x > 2.0f || CD.hitFlame == true)
             {
                 player2.transform.position = moving;
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.inf.gameObject);
                 GM.playAP--;
             }
@@ -301,8 +290,6 @@ public class Player2Controller : MonoBehaviour
             else if (CD.hitRescue == true && rescueMax != 0)
             {
                 player2.transform.position = moving;
-                moving = new Vector3(CD.cdr.gameObject.transform.position.x, CD.cdr.gameObject.transform.position.y, CD.cdr.gameObject.transform.position.z);
-                WC.waterAction(moving);
                 Destroy(CD.res.gameObject);
                 GM.playAP--;
                 rescueMax--;

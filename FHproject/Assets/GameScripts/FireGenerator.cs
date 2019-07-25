@@ -11,8 +11,8 @@ public class FireGenerator : MonoBehaviour
 
     float span = 8.0f;
 
-    int windDir;
 
+    int windDir;
     private void Awake()
     {
         this.fires = GameObject.FindGameObjectsWithTag("fire");

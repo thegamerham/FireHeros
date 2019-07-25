@@ -24,8 +24,6 @@ public class Player3Controller : MonoBehaviour
     Button btn_Right;
 
     Touch t;
-    Animator anim;
-    WaterController WC;
 
     Vector3 moving = new Vector3(0, 0, 0);
 
@@ -33,7 +31,6 @@ public class Player3Controller : MonoBehaviour
     {
         player = this.gameObject;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        WC = GameObject.Find("WaterGenerator").GetComponent<WaterController>();
     }
 
     float timer = 15.0f;
@@ -53,19 +50,16 @@ public class Player3Controller : MonoBehaviour
         {
             if (coll.gameObject.transform.position.y < 0 && GM.playAP >= 3)
             {
-                WC.waterAction(coll.gameObject.transform.position);
                 Destroy(coll.gameObject);
                 GM.playAP -= 3;
             }
             else if (coll.gameObject.transform.position.y < 2.1 && GM.playAP >= 4)
             {
-                WC.waterAction(coll.gameObject.transform.position);
                 Destroy(coll.gameObject);
                 GM.playAP -= 4;
             }
             else if (coll.gameObject.transform.position.y < 4.2 && GM.playAP >= 5)
             {
-                WC.waterAction(coll.gameObject.transform.position);
                 Destroy(coll.gameObject);
                 GM.playAP -= 5;
             }
